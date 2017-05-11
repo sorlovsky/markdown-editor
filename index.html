@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Markdown Renderer</title>
+		<link rel="stylesheet" href="main.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	</head>
+	<body>
+		<div class="container">	
+			<h1 class="text-center">Markdown Editor</h1>
+			<hr>
+			<div class="row">
+				<div class="col-md-6">
+					<textarea id="sourceTA" rows="10" cols="50">
+### DataCamp
+The Easiest Way To Learn Data Science Online
+
+- Python
+- R
+```
+var truth = {
+DataCamp: 'is great',
+JavaScript: 'is awesome'
+}
+```
+
+					</textarea>
+				</div>
+				<div class="col-md-6">
+					<div id="targetDiv"></div>
+				</div>
+
+
+			</div>
+			<div class="text-center">
+			<button class="btn btn-primary" id="runBtn" onClick="run()">Convert</button>
+			</div>
+		</div>
+	</body>
+	<script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.1/dist/showdown.min.js"></script> 
+
+	<script>
+function resize() {
+
+}
+
+function run() {
+	var text = document.getElementById('sourceTA').value,
+		target = document.getElementById('targetDiv'),
+		converter = new showdown.Converter(),
+		html = converter.makeHtml(text);
+
+	target.innerHTML = html;
+}
+	</script>
+</html>
